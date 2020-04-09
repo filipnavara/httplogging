@@ -11,7 +11,7 @@ namespace HttpLogging
 		{
 			using var clientHandler = new HttpClientHandler();
 			using var log = File.OpenWrite("log.har");
-			using var loggingHandler = new LoggingHandler(new HttpClientHandler(), log);
+			using var loggingHandler = new LoggingHandler(clientHandler, log);
 			using var client = new HttpClient(loggingHandler);
 
 			var result = await client.GetAsync("https://microsoft.com");
